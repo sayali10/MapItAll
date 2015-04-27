@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MapITAll</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_send">Download</string>
+    <string name="button_scan">Scan</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_display_message">Download Complete</string>
+    <string name="hello_world">Download Complete</string>
+    <string name="title_activity_scan_qrcode">Scan QR Code</string>
+    <string name="scan_message"> Scanning in progress</string>
+    <string name="title_activity_scan_button">ScanButtonActivity</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="desc">Displaying Map</string>
+    
+
+</resources>
