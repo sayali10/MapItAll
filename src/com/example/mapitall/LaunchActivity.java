@@ -21,6 +21,7 @@ import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -34,15 +35,19 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.provider.SyncStateContract.Constants;
 
 public class LaunchActivity extends ActionBarActivity {
 
+/*	SharedPreferences mPrefs;
+	final String welcomeScreenShownPref = "welcomeScreenShown";
+*/
+	
     public final static String EXTRA_MESSAGE = "com.example.user.myapplication.MESSAGE";
     EditText Location, Building, Room;
     String loc, build, room;
     Context ctx = this;
-    
     
     private ProgressDialog pDialog;
     
@@ -55,7 +60,7 @@ public class LaunchActivity extends ActionBarActivity {
     private static final String TAG_LOCATION_ID = "location_id";
     private static final String TAG_BUILDING_NAME = "building_name";
     private static final String TAG_FLOOR = "floor";
-    private static final String TAG_MAP_IMG = "map_img";
+    //private static final String TAG_MAP_IMG = "map_img";
  
     // contacts JSONArray
     JSONArray location = null;
@@ -68,7 +73,21 @@ public class LaunchActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_launch);
+		
+	/*	mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+	    // second argument is the default to use if the preference can't be found
+	    Boolean welcomeScreenShown = mPrefs.getBoolean(welcomeScreenShownPref, false);
+
+	    if (!welcomeScreenShown) {
+	        // here you can launch another activity if you like
+	        // the code below will display a popup
+	    	Intent intent = new Intent(this, ScanButtonActivity.class);
+	        startActivity(intent);	    	
+	    	
+	    }*/
 	}
+	
 
 
 	/*
@@ -121,15 +140,11 @@ public class LaunchActivity extends ActionBarActivity {
         
         // Parsing the JSON file 
         locationsList = new ArrayList<HashMap<String, String>>();
-        //ListView lv = getListView();
         
         // Calling async task to get json
         new GetLocations().execute();
        
         
-        // Inserting Information into database
-        //DatabaseOperations DB = new DatabaseOperations(ctx);
-        //DB.putInformation(DB, loc, "LH", "130");
         Toast.makeText(getBaseContext(), "Download Success", Toast.LENGTH_LONG).show();
         finish();
         
@@ -141,18 +156,6 @@ public class LaunchActivity extends ActionBarActivity {
      * Async task class to get json by making HTTP call
      * */
     private class GetLocations extends AsyncTask<Void, Void, Void> {
-
-    	/*
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            // Showing progress dialog
-            pDialog = new ProgressDialog(LaunchActivity.this);
-            pDialog.setMessage("Please wait...");
-            pDialog.setCancelable(false);
-            pDialog.show();
- 
-        }*/
     	
         @Override
         protected Void doInBackground(Void... arg0) {
@@ -176,7 +179,7 @@ public class LaunchActivity extends ActionBarActivity {
                         DatabaseOperations DB = new DatabaseOperations(ctx);                        
                         
                         String id = c.getString(TAG_LOCATION_ID);
-                        String mapimg = c.getString(TAG_MAP_IMG);
+                        //String mapimg = c.getString(TAG_MAP_IMG);
                         String building = c.getString(TAG_BUILDING_NAME);
                         String floor = c.getString(TAG_FLOOR);
 
@@ -186,19 +189,6 @@ public class LaunchActivity extends ActionBarActivity {
 
                         DB.putInformation(DB, id, building, floor);                        
                         downloadImagesToSdCard(id);
-
-                        /*
-                        // tmp hashmap for single contact
-                        HashMap<String, String> loc = new HashMap<String, String>();
- 
-                        // adding each child node to HashMap key => value
-                        loc.put(TAG_LOCATION_ID, id);
-                        loc.put(TAG_BUILDING_NAME, building);
-                        loc.put(TAG_FLOOR, floor);
-                        //loc.put(TAG_MAP_IMG, mapimg);
- 
-                        // adding contact to contact list
-                        //locationsList.add(loc); */
                         
                     }
                 } catch (JSONException e) {
@@ -209,17 +199,6 @@ public class LaunchActivity extends ActionBarActivity {
             }
             return null;
         }
- 
-   /*     @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-            // Dismiss the progress dialog
-            if (pDialog.isShowing())
-                pDialog.dismiss();
-        }
- */
-    
-
     
     private void downloadImagesToSdCard(String imageName)
     {

@@ -27,11 +27,11 @@
         </activity>
         <activity
             android:name="com.example.mapitall.ScanButtonActivity"
-            android:label="@string/title_activity_scan_button" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.mapitall.ScanQRCodeActivity"
-            android:label="@string/title_activity_scan_qrcode" >
+            android:label="@string/app_name">
         </activity>
     </application>
 

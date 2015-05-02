@@ -8,13 +8,14 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     >
+    
 
     <TextView
         android:id="@+id/display_message"
         android:text="@string/hello_world"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:layout_alignParentTop="true"
         />
 

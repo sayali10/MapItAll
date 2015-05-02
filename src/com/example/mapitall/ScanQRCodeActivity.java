@@ -112,9 +112,9 @@ public class ScanQRCodeActivity extends ActionBarActivity {
             }
         }while(CR.moveToNext());
        
-        locTxt.setText("Location: " + locContent);
+        locTxt.setText("Room: " + locContent);
 		buildTxt.setText("Building: " + buildContent);
-		floorTxt.setText("Room: "+ floorContent);
+		floorTxt.setText("Floor: "+ floorContent);
 		imgView.setImageBitmap(bmp);
 		
 		
@@ -160,5 +160,6 @@ public class ScanQRCodeActivity extends ActionBarActivity {
 			return rootView;
 		}
 	}
+	
 
 }

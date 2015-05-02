@@ -1260,14 +1260,16 @@ containing a value of this type.
         public static final int app_name=0x7f0a000d;
         public static final int button_scan=0x7f0a0010;
         public static final int button_send=0x7f0a000f;
-        public static final int desc=0x7f0a0018;
-        public static final int enter_location=0x7f0a0017;
-        public static final int hello_world=0x7f0a0013;
-        public static final int scan_message=0x7f0a0015;
+        public static final int desc=0x7f0a001a;
+        public static final int enter_location=0x7f0a0019;
+        public static final int hello_world=0x7f0a0014;
+        public static final int loc_download_message=0x7f0a0015;
+        public static final int scan_message=0x7f0a0017;
+        public static final int scanner_message=0x7f0a0013;
         public static final int title_activity_display_message=0x7f0a0012;
         public static final int title_activity_main=0x7f0a0011;
-        public static final int title_activity_scan_button=0x7f0a0016;
-        public static final int title_activity_scan_qrcode=0x7f0a0014;
+        public static final int title_activity_scan_button=0x7f0a0018;
+        public static final int title_activity_scan_qrcode=0x7f0a0016;
     }
     public static final class style {
         /** 
